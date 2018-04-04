@@ -1,0 +1,17 @@
+{
+	"name": "ghost-multilanguage-app",
+	"version": "1.0.0",
+	"description": "Multilanguage application for ghost blog",
+	"main": "index.js",
+	"scripts": {},
+	"author": "David Lopez",
+	"license": "MIT",
+	"dependencies": {
+		"ghost-app": "0.0.3"
+	},
+	"ghost": {
+		"permissions": {
+			"helpers": ["equal"]
+		}
+	}
+}
