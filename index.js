@@ -10,7 +10,7 @@ const MultiLang = App.extend({
 
     activate: function () {
 		this.ghost.helpers.register('equal', this.equalHelper);
-		this.ghost.helpers.register('instagram-widget', this.instagramEmbed);
+		this.ghost.helpers.register('instagram_widget', this.instagramEmbed);
 	},
 
 	deactivate: function () {},

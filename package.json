@@ -14,7 +14,7 @@
 		"permissions": {
 			"helpers": [
 				"equal",
-				"instagram-widget"
+				"instagram_widget"
 			]
 		}
 	}
