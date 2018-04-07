@@ -10,7 +10,7 @@ const MultiLang = App.extend({
 
     activate: function () {
 		this.ghost.helpers.register('equal', this.equalHelper);
-		this.ghost.helpers.register('instagramwidget', this.instagramEmbed);
+		this.ghost.helpers.register('instagram_widget', this.instagramEmbed);
 	},
 
 	deactivate: function () {},
@@ -39,7 +39,7 @@ const MultiLang = App.extend({
 	 * @param user Instagram user
 	 */
 	instagramEmbed: function(user) {
-		const instagramURL = `https://www.instagram.com/${user}/?__a=1`;
+		const instagramURL = `https://www.instagram.com/shibami_/?__a=1`;
 		const getInstagramJSON = request('GET', instagramURL);
 		const instagramData = JSON.parse(getInstagramJSON.getBody('utf-8'));
 		const mediaId = instagramData.graphql.user.edge_owner_to_timeline_media.edges[0].node.shortcode;
