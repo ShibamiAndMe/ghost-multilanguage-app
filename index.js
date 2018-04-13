@@ -1,14 +1,16 @@
 const App = require('ghost-app');
 const request = require('sync-request');
+const fs = require('fs');
+const path = require('path');
 
 const MultiLang = App.extend({
 
 	// Ghost app functions
-    install: function () {},
+	install: function () {},
 
-    uninstall: function () {},
+	uninstall: function () {},
 
-    activate: function () {
+	activate: function () {
 		this.ghost.helpers.register('equal', this.equalHelper);
 		this.ghost.helpers.register('instagram_widget', this.instagramEmbed);
 	},
@@ -23,7 +25,7 @@ const MultiLang = App.extend({
 	 * @param rvalue
 	 * @param options
 	 */
-	equalHelper: function(lvalue, rvalue, options) {
+	equalHelper: function (lvalue, rvalue, options) {
 		if (arguments.length < 3)
 			throw new Error(`Handlebars Helper 'equal' needs 2 parameters. Actuals: ${lvalue} - ${rvalue}`);
 		if (lvalue == rvalue) {
@@ -38,14 +40,8 @@ const MultiLang = App.extend({
 	 *
 	 * @param user Instagram user
 	 */
-	instagramEmbed: function(user) {
-		const instagramURL = `https://www.instagram.com/shibami_/?__a=1`;
-		const getInstagramJSON = request('GET', instagramURL);
-		const instagramData = JSON.parse(getInstagramJSON.getBody('utf-8'));
-		const mediaId = instagramData.graphql.user.edge_owner_to_timeline_media.edges[0].node.shortcode;
-		const url = `https://api.instagram.com/oembed/?url=http://instagr.am/p/${mediaId}`;
-		const res = request('GET', url);
-		return JSON.parse(res.getBody('utf8')).html;
+	instagramEmbed: function (user) {
+		return fs.readFileSync(path.join(__dirname, '../../data/embeddedInstagram.html'), 'utf8');
 	}
 
 });
