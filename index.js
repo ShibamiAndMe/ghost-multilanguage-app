@@ -41,7 +41,15 @@ const MultiLang = App.extend({
 	 * @param user Instagram user
 	 */
 	instagramEmbed: function (user) {
-		return fs.readFileSync(path.join(__dirname, '../../data/embeddedInstagram.html'), 'utf8');
+		const dataString = fs.readFileSync(path.join(__dirname, '../../data/instagramData.json'), 'utf8');
+		const data = JSON.parse(dataString);
+		const random = Math.floor(Math.random() * data.posts.length);
+		console.log(random);
+
+		const post = data.posts[random].html;
+		//console.log(post);
+
+		return post;
 	}
 
 });
