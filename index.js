@@ -44,7 +44,6 @@ const MultiLang = App.extend({
 		const dataString = fs.readFileSync(path.join(__dirname, '../../data/instagramData.json'), 'utf8');
 		const data = JSON.parse(dataString);
 		const random = Math.floor(Math.random() * data.posts.length);
-		console.log(random);
 
 		const post = data.posts[random].html;
 		//console.log(post);
